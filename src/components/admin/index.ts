@@ -1,0 +1,6 @@
+export { AdminSidebar } from './AdminSidebar'
+export { CategoriesTable } from './CategoriesTable'
+export { CategoryDialog } from './CategoryDialog'
+export { ProductsTable } from './ProductsTable'
+export { ProductDialog } from './ProductDialog'
+export { DeleteDialog } from './DeleteDialog'
