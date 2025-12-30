@@ -57,6 +57,7 @@ export interface Database {
           is_active: boolean
           is_featured: boolean
           sort_order: number
+          tags: string[] | null
           created_at: string
           updated_at: string
         }
@@ -74,6 +75,7 @@ export interface Database {
           is_active?: boolean
           is_featured?: boolean
           sort_order?: number
+          tags?: string[] | null
           created_at?: string
           updated_at?: string
         }
@@ -91,6 +93,7 @@ export interface Database {
           is_active?: boolean
           is_featured?: boolean
           sort_order?: number
+          tags?: string[] | null
           created_at?: string
           updated_at?: string
         }

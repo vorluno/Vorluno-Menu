@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl'
 import { Link } from '@/lib/i18n/navigation'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { ThemeToggle } from './ThemeToggle'
+import { OpenStatus } from './OpenStatus'
 import { CieloLogo } from '@/components/ui/cielo-logo'
 import { useState, useEffect } from 'react'
 
@@ -30,7 +32,7 @@ export function Header() {
         <div className={`flex items-center justify-between transition-all duration-300 ${
           isScrolled ? 'h-16' : 'h-20'
         }`}>
-          {/* Logo CIELO */}
+          {/* Logo */}
           <Link href="/" className="group flex items-center gap-3 transition-all hover:scale-[1.02]">
             <CieloLogo size={isScrolled ? 'sm' : 'md'} />
 
@@ -49,8 +51,10 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Language Switcher */}
-          <div className="flex items-center gap-4">
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            <OpenStatus />
+            <ThemeToggle />
             <LanguageSwitcher />
           </div>
         </div>

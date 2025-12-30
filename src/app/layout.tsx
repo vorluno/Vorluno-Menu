@@ -9,15 +9,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | CIELO Rooftop Bar',
-    default: 'CIELO Rooftop Bar - Digital Menu',
+    template: '%s | Digital Menu',
+    default: 'Restaurant Digital Menu - Premium PWA',
   },
-  description: "Menú digital de CIELO Rooftop Bar - Cocktails, Wine, Food & More",
-  manifest: '/manifest.json',
+  description: "Modern digital menu PWA - Showcase your restaurant menu with style",
+  manifest: '/manifest.webmanifest',
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'default',
-    title: 'CIELO Menu',
+    statusBarStyle: 'black-translucent',
+    title: 'Digital Menu',
+  },
+  icons: {
+    icon: [
+      { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ]
   },
 };
 
@@ -25,7 +34,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#0a0a0a', // CIELO negro profundo
+  themeColor: '#0a0a0a',
 };
 
 export default function RootLayout({

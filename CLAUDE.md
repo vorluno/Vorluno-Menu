@@ -1,7 +1,7 @@
-# CodeMenu - Cielo Rooftop Digital Menu
+# CodeMenu - Digital Menu PWA
 
 ## Project Overview
-Digital menu PWA for Cielo Rooftop Bar restaurant. Public menu viewing + Admin panel for CRUD operations.
+Modern digital menu PWA for restaurants. Public menu viewing + Admin panel for CRUD operations.
 
 ## Tech Stack
 - **Framework**: Next.js 15 (App Router, TypeScript)
@@ -105,7 +105,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 ```
 
 ## Design Guidelines
-- Primary color: Navy blue (#1e3a5f) matching Cielo branding
+- Primary color: Navy blue (#1e3a5f)
 - Accent: Gold/amber (#d4af37)
 - Background: Clean white/light gray
 - Typography: Clean sans-serif (Inter or similar)

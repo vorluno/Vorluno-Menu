@@ -1,10 +1,12 @@
 'use client'
 
 import { useLocale } from 'next-intl'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Product } from '@/types/database'
 import { getPlaceholderImage } from '@/lib/placeholder-images'
+import { TagBadge } from './TagBadge'
+import { trackProductView } from '@/lib/analytics'
 import Image from 'next/image'
 import { X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -21,6 +23,13 @@ export function ProductModal({ product, categorySlug, index, isOpen, onClose }: 
   const locale = useLocale()
   const [imageSrc, setImageSrc] = useState(product?.image_url || getPlaceholderImage(categorySlug, index))
   const [imageError, setImageError] = useState(false)
+
+  // Track product view when modal opens
+  useEffect(() => {
+    if (isOpen && product?.id) {
+      trackProductView(product.id)
+    }
+  }, [isOpen, product?.id])
 
   if (!product) return null
 
@@ -83,6 +92,15 @@ export function ProductModal({ product, categorySlug, index, isOpen, onClose }: 
             <p className="text-base text-muted-foreground leading-relaxed">
               {description}
             </p>
+          )}
+
+          {/* Tags */}
+          {product.tags && product.tags.length > 0 && (
+            <div className="flex items-center gap-2 flex-wrap">
+              {product.tags.map((tag) => (
+                <TagBadge key={tag} tag={tag} showLabel={true} size="md" />
+              ))}
+            </div>
           )}
 
           {/* Price section */}

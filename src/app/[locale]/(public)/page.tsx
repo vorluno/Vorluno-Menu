@@ -1,7 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { CategoryCard } from '@/components/menu/CategoryCard'
-import { Category } from '@/types/database'
+import { FeaturedCarousel } from '@/components/menu/FeaturedCarousel'
+import { Category, Product } from '@/types/database'
 
 // Demo categories for when Supabase is not configured
 const demoCategories: Category[] = [
@@ -26,6 +27,24 @@ const demoCategories: Category[] = [
 
 type CategoryWithCount = Category & { productCount: number }
 
+async function getFeaturedProducts() {
+  try {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from('products')
+      .select('*, categories(slug)')
+      .eq('is_active', true)
+      .eq('is_featured', true)
+      .order('sort_order', { ascending: true })
+      .limit(8)
+
+    if (error || !data) return []
+    return data
+  } catch {
+    return []
+  }
+}
+
 async function getCategoriesWithCounts(): Promise<CategoryWithCount[]> {
   try {
     const supabase = await createClient()
@@ -44,9 +63,9 @@ async function getCategoriesWithCounts(): Promise<CategoryWithCount[]> {
       }))
     }
 
-    return data.map((cat: any) => ({
-      ...cat,
-      productCount: cat.products?.[0]?.count || 0
+    return data.map((cat) => ({
+      ...(cat as Category),
+      productCount: (cat as { products?: Array<{ count: number }> }).products?.[0]?.count || 0
     }))
   } catch {
     // Return demo data with fake counts
@@ -68,6 +87,7 @@ export default async function HomePage({
   const t = await getTranslations('menu')
   const tCommon = await getTranslations('common')
   const categories = await getCategoriesWithCounts()
+  const featuredProducts = await getFeaturedProducts()
 
   return (
     <div className="min-h-screen">
@@ -101,6 +121,11 @@ export default async function HomePage({
           </div>
         </div>
       </section>
+
+      {/* Featured Products Carousel */}
+      {featuredProducts.length > 0 && (
+        <FeaturedCarousel products={featuredProducts} />
+      )}
 
       {/* Categories Section */}
       <section className="container mx-auto px-4 py-12">

@@ -1,6 +1,6 @@
-# 🍽️ CodeMenu - Cielo Rooftop Bar
+# 🍽️ CodeMenu - Digital Menu PWA
 
-Digital menu PWA (Progressive Web App) for Cielo Rooftop Bar restaurant with public menu viewing and admin panel for content management.
+Modern digital menu PWA (Progressive Web App) for restaurants with public menu viewing and admin panel for content management.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.0-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
@@ -56,7 +56,7 @@ Digital menu PWA (Progressive Web App) for Cielo Rooftop Bar restaurant with pub
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/swlarot/codemenu.git
+git clone https://github.com/yourusername/codemenu.git
 cd codemenu
 npm install
 ```
@@ -92,7 +92,7 @@ See `SUPABASE_STORAGE_SETUP.md` for setup guide.
 
 In Supabase Dashboard → Authentication → Users → Add user:
 ```
-Email: admin@cielo.com
+Email: admin@example.com
 Password: [your-secure-password]
 ```
 
@@ -143,7 +143,7 @@ codemenu/
 
 ## 🎨 Design System
 
-### Brand Colors (Cielo Rooftop)
+### Brand Colors
 - **Primary**: Navy blue `#1a1a2e`
 - **Accent**: Gold `#c9a227`
 - **Background**: Light variations
@@ -153,7 +153,7 @@ codemenu/
 - **Body**: Inter (sans-serif)
 
 ### Components
-All UI components from shadcn/ui, customized with Cielo branding.
+All UI components from shadcn/ui, fully customizable for your brand.
 
 ---
 
@@ -254,10 +254,13 @@ This project is licensed under the MIT License.
 
 ## 📧 Contact
 
-**Cielo Rooftop Bar**
 For questions or support, please open an issue on GitHub.
 
 ---
+
+## 💙 Credits
+
+Developed by **[Vorluno](https://vorluno.dev)**
 
 <p align="center">
   🤖 Built with <a href="https://claude.com/claude-code">Claude Code</a>

@@ -200,5 +200,6 @@ export function ProductsTable({ products, categories }: ProductsTableProps) {
         </TableBody>
       </Table>
     </div>
+    </div>
   )
 }

@@ -22,7 +22,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Checkbox } from '@/components/ui/checkbox'
 import { ImageUpload } from '@/components/admin/ImageUpload'
+import { TagBadge } from '@/components/menu/TagBadge'
+import { PRODUCT_TAGS, type ProductTag } from '@/lib/constants'
 import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
 
@@ -51,6 +54,7 @@ export function ProductDialog({ children, product, categories }: ProductDialogPr
     sort_order: product?.sort_order || 0,
     is_active: product?.is_active ?? true,
     is_featured: product?.is_featured ?? false,
+    tags: product?.tags || [],
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -93,6 +97,7 @@ export function ProductDialog({ children, product, categories }: ProductDialogPr
           sort_order: 0,
           is_active: true,
           is_featured: false,
+          tags: [],
         })
       }
     } catch {
@@ -265,6 +270,54 @@ export function ProductDialog({ children, product, categories }: ProductDialogPr
               />
               <Label htmlFor="is_featured">{t('isFeatured')}</Label>
             </div>
+          </div>
+
+          {/* Tags */}
+          <div className="space-y-3 p-4 border rounded-lg bg-muted/30">
+            <Label>Tags y Alérgenos</Label>
+            <div className="grid grid-cols-2 gap-3">
+              {(Object.keys(PRODUCT_TAGS) as ProductTag[]).map((tagKey) => {
+                const tagData = PRODUCT_TAGS[tagKey]
+                const isSelected = formData.tags.includes(tagKey)
+
+                return (
+                  <div
+                    key={tagKey}
+                    className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors cursor-pointer"
+                    onClick={() => {
+                      if (!loading) {
+                        setFormData((prev) => ({
+                          ...prev,
+                          tags: isSelected
+                            ? prev.tags.filter((t) => t !== tagKey)
+                            : [...prev.tags, tagKey]
+                        }))
+                      }
+                    }}
+                  >
+                    <Checkbox
+                      id={`tag-${tagKey}`}
+                      checked={isSelected}
+                      disabled={loading}
+                      className="pointer-events-none"
+                    />
+                    <Label htmlFor={`tag-${tagKey}`} className="cursor-pointer flex-1">
+                      <TagBadge tag={tagKey} showLabel={true} size="sm" />
+                    </Label>
+                  </div>
+                )
+              })}
+            </div>
+            {formData.tags.length > 0 && (
+              <div className="pt-2 border-t">
+                <p className="text-xs text-muted-foreground mb-2">Seleccionados ({formData.tags.length}):</p>
+                <div className="flex flex-wrap gap-1">
+                  {formData.tags.map((tag) => (
+                    <TagBadge key={tag} tag={tag} showLabel={true} size="sm" />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Actions */}

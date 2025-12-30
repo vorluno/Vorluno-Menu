@@ -10,6 +10,8 @@ import {
   LayoutDashboard,
   FolderTree,
   Package,
+  BarChart3,
+  Settings,
   LogOut,
   Menu,
   X
@@ -46,6 +48,8 @@ export function AdminSidebar() {
     { href: '/dashboard', icon: LayoutDashboard, label: t('dashboard') },
     { href: '/dashboard/categories', icon: FolderTree, label: t('categories') },
     { href: '/dashboard/products', icon: Package, label: t('products') },
+    { href: '/dashboard/analytics', icon: BarChart3, label: 'Analytics' },
+    { href: '/dashboard/settings', icon: Settings, label: t('settings') },
   ]
 
   return (

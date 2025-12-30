@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Toaster } from '@/components/ui/sonner';
 import { locales } from '@/lib/i18n/config';
+import { ThemeProvider } from 'next-themes';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,12 +34,14 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-gradient-luxury min-h-screen`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-          <Toaster position="top-center" richColors />
-        </NextIntlClientProvider>
+    <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background min-h-screen`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <Toaster position="top-center" richColors />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

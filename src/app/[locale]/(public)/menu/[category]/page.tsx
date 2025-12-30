@@ -141,7 +141,7 @@ export default async function CategoryPage({
             <p className="text-muted-foreground text-lg">{t('noProducts')}</p>
           </div>
         ) : (
-          <ProductsGrid products={products} categorySlug={categorySlug} />
+          <ProductsGrid products={products} categorySlug={categorySlug} categoryId={category.id} />
         )}
       </div>
     </div>

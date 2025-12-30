@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Product } from '@/types/database'
 import { getPlaceholderImage } from '@/lib/placeholder-images'
+import { TagBadge } from './TagBadge'
 import Image from 'next/image'
 
 interface ProductCardProps {
@@ -69,7 +70,7 @@ export function ProductCard({ product, categorySlug, index, onClick }: ProductCa
         )}
 
         {/* Price section - compact for mobile */}
-        <div className="pt-2 border-t border-border/50">
+        <div className="pt-2 border-t border-border/50 space-y-2">
           {product.price_alt && priceAltLabel ? (
             // Dual pricing - compact version
             <div className="flex items-center justify-between gap-2 text-xs sm:text-sm">
@@ -97,6 +98,15 @@ export function ProductCard({ product, categorySlug, index, onClick }: ProductCa
                 <span className="text-accent">$</span>
                 <span className="text-foreground">{product.price.toFixed(2)}</span>
               </span>
+            </div>
+          )}
+
+          {/* Tags - show only icons on mobile, max 3 tags */}
+          {product.tags && product.tags.length > 0 && (
+            <div className="flex items-center gap-1 flex-wrap">
+              {product.tags.slice(0, 3).map((tag) => (
+                <TagBadge key={tag} tag={tag} showLabel={false} size="sm" />
+              ))}
             </div>
           )}
         </div>

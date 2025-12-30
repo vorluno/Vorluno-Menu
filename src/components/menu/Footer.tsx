@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Instagram, Facebook, Phone, Mail } from 'lucide-react'
+import { WeekSchedule } from './WeekSchedule'
 
 export function Footer() {
   const t = useTranslations('footer')
@@ -26,8 +27,8 @@ export function Footer() {
               <div className="absolute inset-3 rounded-full bg-accent" />
             </div>
           </div>
-          <h3 className="font-serif text-2xl font-bold text-primary mb-1">CIELO</h3>
-          <p className="text-[10px] uppercase tracking-wide-luxury text-muted-foreground">ROOFTOP BAR</p>
+          <h3 className="font-serif text-2xl font-bold text-primary mb-1">Tu Restaurante</h3>
+          <p className="text-[10px] uppercase tracking-wide-luxury text-muted-foreground">Menú Digital</p>
         </div>
 
         {/* Social icons */}
@@ -54,7 +55,7 @@ export function Footer() {
             <Phone className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-luxury" />
           </a>
           <a
-            href="mailto:info@cielorooftopbar.com"
+            href="mailto:info@example.com"
             className="h-10 w-10 rounded-full bg-primary/5 hover:bg-accent/10 flex items-center justify-center transition-luxury hover:scale-110 group"
             aria-label="Email"
           >
@@ -62,13 +63,24 @@ export function Footer() {
           </a>
         </div>
 
+        {/* Schedule */}
+        <WeekSchedule />
+
         {/* Copyright */}
-        <div className="text-center space-y-1">
+        <div className="text-center space-y-2">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} CIELO Rooftop Bar. {t('rights')}.
+            &copy; {currentYear} Tu Restaurante. {t('rights')}.
           </p>
-          <p className="text-xs text-muted-foreground/60">
-            {t('poweredBy')}
+          <p className="text-xs text-muted-foreground/70">
+            {t('poweredBy')} •{' '}
+            <a
+              href="https://vorluno.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors underline decoration-accent/30 hover:decoration-accent"
+            >
+              vorluno.dev
+            </a>
           </p>
         </div>
       </div>

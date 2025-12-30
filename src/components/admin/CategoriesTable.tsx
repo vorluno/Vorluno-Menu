@@ -158,5 +158,6 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
         </TableBody>
       </Table>
     </div>
+    </div>
   )
 }

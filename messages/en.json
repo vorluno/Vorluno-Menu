@@ -17,14 +17,14 @@
     "items": "items"
   },
   "header": {
-    "title": "CIELO",
-    "subtitle": "Rooftop Bar",
+    "title": "Your Restaurant",
+    "subtitle": "Digital Menu",
     "menu": "Menu",
     "admin": "Admin"
   },
   "footer": {
     "rights": "All rights reserved",
-    "poweredBy": "Digital Menu"
+    "poweredBy": "Developed by Vorluno"
   },
   "menu": {
     "title": "Our Menu",
@@ -96,7 +96,7 @@
   },
   "pwa": {
     "installTitle": "Install App",
-    "installDescription": "Install CIELO Rooftop for quick access",
+    "installDescription": "Install Digital Menu for quick access",
     "install": "Install",
     "notNow": "Not now",
     "offline": "Offline",

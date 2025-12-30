@@ -1,17 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Product } from '@/types/database'
 import { ProductCard } from './ProductCard'
 import { ProductModal } from './ProductModal'
+import { trackCategoryView } from '@/lib/analytics'
 
 interface ProductsGridProps {
   products: Product[]
   categorySlug: string
+  categoryId?: string
 }
 
-export function ProductsGrid({ products, categorySlug }: ProductsGridProps) {
+export function ProductsGrid({ products, categorySlug, categoryId }: ProductsGridProps) {
   const [selectedProduct, setSelectedProduct] = useState<{ product: Product; index: number } | null>(null)
+
+  // Track category view when component mounts
+  useEffect(() => {
+    if (categoryId) {
+      trackCategoryView(categoryId)
+    }
+  }, [categoryId])
 
   return (
     <>
