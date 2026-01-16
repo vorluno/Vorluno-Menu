@@ -280,7 +280,3 @@ For questions or support, please open an issue on GitHub.
 ## 💙 Credits
 
 Developed by **[Vorluno](https://vorluno.dev)**
-
-<p align="center">
-  🤖 Built with <a href="https://claude.com/claude-code">Claude Code</a>
-</p>
